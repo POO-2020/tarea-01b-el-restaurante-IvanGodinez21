@@ -33,10 +33,21 @@ class Main {
         console.log(`La dirección corta: ${direccion.getFormatoCorto()}`);
         console.log(`La dirección extendida: ${direccion.getFormatoExtendido()}`);
     }
+    probarPrecio() {
+        console.log(`<---------Precio--------->`)
+        let precio1 = new Precio(127)
+        let precio2 = new Precio(127.45)
+        let precio3 = new Precio(1127.45)
+        let precio4 = new Precio(34127.45)
+        console.log(`${precio1.getPrecio()}`)
+        console.log(`${precio2.getPrecio()}`)
+        console.log(`${precio3.getPrecio()}`)
+        console.log(`${precio4.getPrecio()}`)
+    }
     probarProducto() {
         console.log(`<---------Producto--------->`);
-        let costo1 = 200
-        let costo2 = 100
+        let costo1 = new Precio(200).getPrecio()
+        let costo2 = new Precio(100).getPrecio();
         let producto1 = new Producto("Pizza", "Mexicana", "Grande", costo1);
         let producto2 = new Producto("Pizza", "Pepperoni", "Grande", costo2);
         console.log(`${producto1.getDescripcion()}`);
@@ -45,8 +56,8 @@ class Main {
     probarElementoPedido() {
         console.log(`<---------Elemento Pedido--------->`);
         let cantidad = 64;
-        let costo1 = 200
-        let producto = new Producto("Pizza", "Mexicana", "Grande", (cantidad * costo1)).getDescripcion();
+        let costo1 = new Precio(200*cantidad).getPrecio();
+        let producto = new Producto("Pizza", "Mexicana", "Grande", costo1).getDescripcion();
         let pedido1 = new ElementoPedido(cantidad, producto);
         console.log(`${pedido1.getDescripcionpedido()}`);
     }
@@ -56,9 +67,10 @@ class Main {
         let hora = new Tiempo(10, 10, "PM").getFormato12();
         let elementos = 3;
         let cantidad = 5;
-        let costo1 = 200
-        let producto1 = new Producto("Pizza", "Mexicana", "Grande", (cantidad * costo1)).getDescripcion();
-        let total = (cantidad * costo1) * elementos;
+        let precio1 = 200;
+        let costo1 = new Precio(precio1*cantidad).getPrecio();
+        let producto1 = new Producto("Pizza", "Mexicana", "Grande", costo1).getDescripcion();
+        let total = new Precio(precio1*cantidad*elementos).getPrecio();
         let pedido = new Pedido(fecha, hora, elementos, cantidad, producto1, total);
         console.log(`${pedido.getResumen()}`);
         console.log(`${pedido.getNumeroElementos()}`)
@@ -72,6 +84,7 @@ let app = new Main
 app.probarFecha();
 app.probarTiempo();
 app.probarDireccion();
+app.probarPrecio();
 app.probarProducto();
 app.probarElementoPedido();
 app.probarPedido();

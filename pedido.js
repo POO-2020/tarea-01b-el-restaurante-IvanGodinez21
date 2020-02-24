@@ -13,10 +13,10 @@ export default class Pedido {
         this.cantidad = cantidad
         this.producto = producto
         this.total = total
-        this.elementosPedidos = new Array
+        this.elementosPedidos = []
     }
     getResumen() {
-        return `Fecha: ${this.fecha}\nHora: ${this.hora}\nElementos: ${this.elementos}\nCantidad: x${this.cantidad} ${this.producto}\nTotal: $${this.total}`
+        return `Fecha: ${this.fecha}\nHora: ${this.hora}\nElementos: ${this.elementos}\nCantidad: x${this.cantidad} ${this.producto}\nTotal: ${this.total}`
     }
     getNumeroElementos() {
         return `No. de Elementos: ${this.elementos}`
@@ -25,15 +25,15 @@ export default class Pedido {
         return `No. de Productos: ${this.cantidad}`
     }
     getCostoTotal() {
-        return `Costo total: $${this.total}`
+        return `Costo total: ${this.total}`
     }
-    agregarElemento(aElemento) {
-        return `${this.elementosPedidos.push(aElemento)}`
+    agregarElemento(elemento1) {
+        return `${this.elementosPedidos.push(elemento1)}`
     }
     listarElementos(){
         console.log("Listado de Elementos")
-        this.elementosPedidos.forEach(elemento =>{
-            console.log(elemento.getDescripcionpedido()) 
+        this.elementosPedidos.forEach(elementos =>{
+            console.log(elementos.getDescripcionpedido()) 
         })
     }
 }
