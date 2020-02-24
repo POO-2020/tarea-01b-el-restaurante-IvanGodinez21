@@ -1,6 +1,7 @@
 import Fecha from "./fecha.js"
 import Tiempo from "./tiempo.js";
 import Direccion from "./direccion.js"
+import Producto from "./producto.js";
 
 class Main {
     probarFecha() {
@@ -29,9 +30,15 @@ class Main {
         console.log(`La dirección corta: ${direccion.getFormatoCorto()}`)
         console.log(`La dirección extendida: ${direccion.getFormatoExtendido()}`)
     }
+    probarProducto() {
+        console.log(`<---------Producto--------->`);
+        let producto = new Producto("Pizza", "Mexicana", "Grande", 200)
+        console.log(`${producto.getDescripcion()}`)
+    }
 }
 
 let app = new Main
 app.probarFecha();
 app.probarTiempo();
 app.probarDireccion();
+app.probarProducto();
