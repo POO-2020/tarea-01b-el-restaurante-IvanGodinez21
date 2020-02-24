@@ -1,6 +1,5 @@
 export default class ElementoPedido {
     /**
-     * 
      * @param {number} cantidad 
      * @param {string} producto 
      */

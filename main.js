@@ -38,7 +38,9 @@ class Main {
     }
     probarElementoPedido() {
         console.log(`<---------Elemento Pedido--------->`);
-        let pedido = new ElementoPedido(64, new Producto("Pizza", "Mexicana", "Grande", 200).getDescripcion())
+        let cantidad = 64
+        let producto = new Producto("Pizza", "Mexicana", "Grande", (cantidad * 200)).getDescripcion()
+        let pedido = new ElementoPedido(cantidad, producto)
         console.log(`${pedido.getDescripcionpedido()}`)
     }
 }
