@@ -1,5 +1,6 @@
 import Fecha from "./fecha.js"
 import Tiempo from "./tiempo.js";
+import Direccion from "./direccion.js"
 
 class Main {
     probarFecha() {
@@ -22,8 +23,15 @@ class Main {
         console.log(`La hora en el formato 24HRS es: ${tiempo.getFormato24()}`);
         console.log(`La hora en el formato AM/PM es: ${tiempo.getFormato12()}`);
     }
+    probarDireccion() {
+        console.log(`<---------Direccion--------->`);
+        let direccion = new Direccion("Avenida", "Siempre Viva", 123, "", "Buena vista")
+        console.log(`La dirección corta: ${direccion.getFormatoCorto()}`)
+        console.log(`La dirección extendida: ${direccion.getFormatoExtendido()}`)
+    }
 }
 
 let app = new Main
 app.probarFecha();
 app.probarTiempo();
+app.probarDireccion();
