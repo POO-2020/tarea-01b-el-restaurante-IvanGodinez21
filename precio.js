@@ -5,6 +5,6 @@ export default class Precio {
     }
 
     getPrecio(){
-        return `$${this.precio}`
+        return `$${this.precio.toFixed(2)}`
     }
 }

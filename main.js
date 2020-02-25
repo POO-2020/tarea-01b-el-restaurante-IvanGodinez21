@@ -46,8 +46,8 @@ class Main {
     }
     probarProducto() {
         console.log(`<---------Producto--------->`);
-        let costo1 = new Precio(200).getPrecio()
-        let costo2 = new Precio(100).getPrecio();
+        let costo1 = new Precio(200)
+        let costo2 = new Precio(100)
         let producto1 = new Producto("Pizza", "Mexicana", "Grande", costo1);
         let producto2 = new Producto("Pizza", "Pepperoni", "Grande", costo2);
         console.log(`${producto1.getDescripcion()}`);
@@ -56,9 +56,9 @@ class Main {
     probarElementoPedido() {
         console.log(`<---------Elemento Pedido--------->`);
         let cantidad = 64;
-        let costo1 = new Precio(200*cantidad).getPrecio();
-        let producto = new Producto("Pizza", "Mexicana", "Grande", costo1).getDescripcion();
-        let pedido1 = new ElementoPedido(cantidad, producto);
+        let costo1 = new Precio(200);
+        let producto = new Producto("Pizza", "Mexicana", "Grande", costo1);
+        let pedido1 = new ElementoPedido(cantidad, costo1, producto);
         console.log(`${pedido1.getDescripcionpedido()}`);
     }
     probarPedido() {
