@@ -6,6 +6,7 @@ import ElementoPedido from "./elementopedido.js";
 import Pedido from "./pedido.js";
 import Precio from "./precio.js";
 import Cliente from "./cliente.js";
+import Restaurante from "./restaurante.js";
 
 class Main {
     probarFecha() {
@@ -81,7 +82,36 @@ class Main {
         console.log(pedido.getResumen());
         console.log("Costo total: " + pedido.getCostoTotal());
     }
-
+    probarRestaurante(){
+        let cantidad1 = 2
+        let cantidad2 = 4
+        let precio1 = new Precio(200)
+        let precio2 = new Precio(100)
+        let producto1 = new ElementoPedido(cantidad1, precio1, new Producto("Pizza", "Mexicana", "Grande", precio1));
+        let producto2 = new ElementoPedido(cantidad2, precio2, new Producto("Pizza", "Pepperoni", "Grande", precio2));
+        let pedido1 = new Pedido(
+        new Fecha(1, 13, 2020),
+        new Tiempo(2, 22, "pm"),
+        new Cliente("Raul Castro Torres", new Direccion ("Avenida", "Siempre Viva", 123, 2, "Buena vista"), 3124456446)
+        );
+        let pedido2 = new Pedido(
+            new Fecha(1, 13, 2020),
+            new Tiempo(2, 22, "pm"),
+            new Cliente("Jesus Castro Martinez", new Direccion ("Avenida", "Siempre Viva", 129, 2, "Buena vista"), 3125156446)
+            );
+        let restaurante = new Restaurante("Papa's Pizzeria", 312454467, new Direccion ("Avenida", "Siempre Viva", 654, 1, "Buena vista"), 3124456446)
+        console.log('<---------Restaurante--------->')
+        restaurante.registrarProducto(producto1)
+        restaurante.registrarProducto(producto2)
+        pedido1.agregarElemento(producto1)
+        pedido2.agregarElemento(producto2)
+        restaurante.registrarPedido(pedido1)
+        restaurante.registrarPedido(pedido2)
+        console.log(`-----Pedidos-----`)
+        restaurante.listarProductos()
+        console.log(`-----Productos-----`)
+        restaurante.listarPedidos()
+    }
 }
 
 let app = new Main
@@ -92,3 +122,4 @@ app.probarPrecio();
 app.probarProducto();
 app.probarElementoPedido();
 app.probarPedido();
+app.probarRestaurante();
