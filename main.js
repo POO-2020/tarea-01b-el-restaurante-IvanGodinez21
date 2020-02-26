@@ -5,6 +5,7 @@ import Producto from "./producto.js";
 import ElementoPedido from "./elementopedido.js";
 import Pedido from "./pedido.js";
 import Precio from "./precio.js";
+import Cliente from "./cliente.js";
 
 class Main {
     probarFecha() {
@@ -56,26 +57,31 @@ class Main {
         let cantidad = 64;
         let costo1 = new Precio(200*cantidad);
         let producto = new Producto("Pizza", "Mexicana", "Grande", costo1);
-        let pedido1 = new ElementoPedido(cantidad, costo1, producto);
-        console.log(`${pedido1.getDescripcionpedido()}`);
+        let elementopedido = new ElementoPedido(cantidad, costo1, producto);
+        console.log(`${elementopedido.getDescripcionpedido()}`);
     }
-    probarPedido() {
+    probarPedido(){
         console.log(`<---------Pedido--------->`);
-        let fecha = new Fecha(19, 2, 2000).getFecha();
-        let hora = new Tiempo(10, 10, "PM").getFormato12();
-        let elementos = 3;
-        let cantidad = 5;
-        let precio1 = 200;
-        let costo1 = new Precio(precio1*cantidad).getPrecio();
-        let producto1 = new Producto("Pizza", "Mexicana", "Grande", costo1).getDescripcion();
-        let total = new Precio(precio1*cantidad*elementos).getPrecio();
-        let pedido = new Pedido(fecha, hora, elementos, cantidad, producto1, total);
-        console.log(`${pedido.getResumen()}`);
-        console.log(`${pedido.getNumeroElementos()}`)
-        console.log(`${pedido.getProductos()}`)
-        console.log(`${pedido.getCostoTotal()}`)
-        console.log(`${pedido}`)
+        let cantidad1 = 1
+        let cantidad2 = 3
+        let precio1 = new Precio(200)
+        let precio2 = new Precio(100)
+        let elemento1 = new ElementoPedido(cantidad1, precio1, new Producto("Pizza", "Mexicana", "Grande", precio1));
+        let elemento2 = new ElementoPedido(cantidad2, precio2, new Producto("Pizza", "Pepperoni", "Grande", precio2));
+        let pedido = new Pedido(
+        new Fecha(1, 13, 2020),
+        new Tiempo(2, 22, "pm"),
+        new Cliente("Raul Castro Torres", new Direccion ("Avenida", "Siempre Viva", 123, 2, "Buena vista"), 3124456446)
+        );
+        pedido.agregarElemento(elemento1);
+        pedido.agregarElemento(elemento2);
+        console.log("Cantidad de productos distintos: " + pedido.getNumeroElementos());
+        console.log("Total de productos: " + pedido.getNumeroProductos()) ;
+        pedido.listarElementos();
+        console.log(pedido.getResumen());
+        console.log("Costo total: " + pedido.getCostoTotal());
     }
+
 }
 
 let app = new Main

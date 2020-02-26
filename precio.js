@@ -1,10 +1,10 @@
 export default class Precio {
     
     constructor(precio){
-    this.precio = (precio);
+    this.precio = parseFloat(precio).toFixed(2);
     }
 
     getPrecio(){
-        return `$${this.precio.toFixed(2)}`
+        return `$${this.precio}`
     }
 }

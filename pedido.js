@@ -1,39 +1,46 @@
-export default class Pedido {
-    /**
-     * @param {string} fecha 
-     * @param {number} elementos 
-     * @param {number} cantidad 
-     * @param {string} producto
-     * @param {number} total 
-     */
-    constructor(fecha, hora, elementos, cantidad, producto, total) {
-        this.fecha = fecha
-        this.hora = hora
-        this.elementos = elementos
-        this.cantidad = cantidad
-        this.producto = producto
-        this.total = total
-        this.elementosPedidos = []
+import Precio from "./precio.js";
+export default class Pedido{
+
+    constructor(fecha,hora,cliente){
+        this.fecha = fecha;
+        this.hora = hora;
+        this.cliente = cliente;
+        this.elementosPedidos = [];
     }
-    getResumen() {
-        return `Fecha: ${this.fecha}\nHora: ${this.hora}\nElementos: ${this.elementos}\nCantidad: x${this.cantidad} ${this.producto}\nTotal: ${this.total}`
+
+    getNumeroElementos(){
+        return `${this.elementosPedidos.length}`
     }
-    getNumeroElementos() {
-        return `No. de Elementos: ${this.elementos}`
+
+    getNumeroProductos(){
+        var productoNum = 0;
+        this.elementosPedidos.forEach(elemento =>{
+            productoNum = elemento.cantidad 
+        })
+        return productoNum;
     }
-    getProductos() {
-        return `No. de Productos: ${this.cantidad}`
+
+    getCostoTotal(){
+        var costo = 0;
+        this.elementosPedidos.forEach(elemento1 => {
+            costo = elemento1.cantidad * elemento1.producto.costo.precio
+        })
+        return `${new Precio(costo).getPrecio()}`
     }
-    getCostoTotal() {
-        return `Costo total: ${this.total}`
-    }
-    agregarElemento(elemento1) {
+
+    agregarElemento(elemento1){
         return `${this.elementosPedidos.push(elemento1)}`
     }
+            
     listarElementos(){
-        console.log("Listado de Elementos")
-        this.elementosPedidos.forEach(elementos =>{
-            console.log(elementos.getDescripcionpedido()) 
+        console.log("-----Listado de Platillos-----")
+        this.elementosPedidos.forEach(elemento =>{
+            console.log(elemento.getDescripcionpedido())
+            
         })
+    }
+
+    getResumen(){
+        return `${this.fecha.getFecha()} ${this.hora.getFormato12()} \n${this.getNumeroElementos()} elementos con ${this.getNumeroProductos()} productos.`
     }
 }
