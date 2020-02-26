@@ -29,7 +29,7 @@ class Main {
     }
     probarDireccion() {
         console.log(`<---------Direccion--------->`);
-        let direccion = new Direccion("Avenida", "Siempre Viva", 123, "", "Buena vista");
+        let direccion = new Direccion("Avenida", "Siempre Viva", 123, 2, "Buena vista");
         console.log(`La dirección corta: ${direccion.getFormatoCorto()}`);
         console.log(`La dirección extendida: ${direccion.getFormatoExtendido()}`);
     }
@@ -46,17 +46,15 @@ class Main {
     }
     probarProducto() {
         console.log(`<---------Producto--------->`);
-        let costo1 = new Precio(200)
-        let costo2 = new Precio(100)
-        let producto1 = new Producto("Pizza", "Mexicana", "Grande", costo1);
-        let producto2 = new Producto("Pizza", "Pepperoni", "Grande", costo2);
+        let producto1 = new Producto("Pizza", "Mexicana", "Grande", new Precio(200));
+        let producto2 = new Producto("Pizza", "Pepperoni", "Grande", new Precio(100));
         console.log(`${producto1.getDescripcion()}`);
         console.log(`${producto2.getDescripcion()}`);
     }
     probarElementoPedido() {
         console.log(`<---------Elemento Pedido--------->`);
         let cantidad = 64;
-        let costo1 = new Precio(200);
+        let costo1 = new Precio(200*cantidad);
         let producto = new Producto("Pizza", "Mexicana", "Grande", costo1);
         let pedido1 = new ElementoPedido(cantidad, costo1, producto);
         console.log(`${pedido1.getDescripcionpedido()}`);

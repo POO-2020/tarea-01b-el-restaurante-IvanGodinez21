@@ -10,6 +10,6 @@ export default class ElementoPedido {
         this.producto = producto
     }
     getDescripcionpedido() {
-        return `x${this.cantidad} ${this.producto} ${this.precio}`
+        return `x${this.cantidad} ${this.producto.getDescripcion()}`
     }
 }
